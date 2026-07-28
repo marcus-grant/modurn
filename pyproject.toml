@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "modurn"
+version = "0.1.0"
+description = "Declarative mod manager for OpenMW: describe your mods in YAML, let modurn download and install them and tie them to your saves."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Marcus Grant" }]
+keywords = ["openmw", "morrowind", "mods", "mod-manager", "nexus"]
+
+dependencies = [
+    "typer>=0.12",
+    "pydantic>=2.6",
+    "PyYAML>=6.0",
+    "playwright>=1.44",
+    "py7zr>=0.21",
+]
+
+[project.optional-dependencies]
+rar = ["rarfile>=4.1"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+modurn = "modurn.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/marcus-grant/modurn"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

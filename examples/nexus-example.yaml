@@ -1,0 +1,22 @@
+# A minimal Nexus-backed modlist for OpenMW.
+#
+# Run `modurn nexus login` once first, then `modurn apply examples/nexus-example.yaml`.
+# Find each file id by opening the mod's Files tab on nexusmods.com and reading
+# the file_id= value in a file's download link.
+
+game:
+  config: ~/.config/openmw/openmw.cfg
+  mods_dir: ~/games/openmw/mods
+
+profile: nexus-demo
+# save: ~/.local/share/openmw/saves/my-playthrough.omwsave   # optional
+
+mods:
+  - name: Morrowind Code Patch
+    nexus: morrowind/19510
+    files: [7702]          # <- replace with the real file id from the Files tab
+
+  - name: Patch for Purists
+    nexus: morrowind/45096
+    files: [1000000000]    # <- replace with the real file id
+    enabled: true

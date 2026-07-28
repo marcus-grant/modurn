@@ -1,0 +1,23 @@
+# A modlist that installs from mods you already have on disk.
+# Great for testing the whole pipeline with no network and no browser:
+#
+#   modurn plan  examples/local-example.yaml
+#   modurn apply examples/local-example.yaml
+#
+# `path` can be an archive (.zip/.7z/.rar) or an already-extracted directory.
+
+game:
+  config: ./sandbox/openmw.cfg      # a throwaway cfg so you can experiment safely
+  mods_dir: ./sandbox/mods
+
+profile: local-demo
+
+mods:
+  - name: My Test Mod
+    source: local
+    path: ~/downloads/some-mod.zip
+
+  - name: An Extracted Mod
+    source: local
+    path: ~/mods/already-extracted-folder
+    # data_subdir: 00 Core    # set if the data files live in a subfolder
