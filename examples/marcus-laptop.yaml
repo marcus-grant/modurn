@@ -1,0 +1,31 @@
+# Marcus's laptop: Flatpak OpenMW, GOG Morrowind, self-contained Archive layout.
+#
+# Layout:
+#   ~/Archive/game/openmw/game/Data Files   <- vanilla Morrowind (already installed)
+#   ~/Archive/game/openmw/mods              <- modurn installs mods here
+#   ~/.var/app/org.openmw.OpenMW/config/openmw/openmw.cfg  <- Flatpak's real cfg
+#     (XDG_CONFIG_HOME redirect didn't take; using the Flatpak default directly)
+#
+#   modurn plan  examples/marcus-laptop.yaml
+#   modurn apply examples/marcus-laptop.yaml
+
+game:
+  config: ~/.var/app/org.openmw.OpenMW/config/openmw/openmw.cfg
+  mods_dir: ~/Archive/game/openmw/mods
+
+profile: starter-pack
+# save: set once the real playthrough's first save exists, via:
+#   modurn profile link starter-pack ~/.var/app/org.openmw.OpenMW/data/openmw/saves/<save>.omwsave
+
+mods: []
+  # Filled in once we have the Morrowind Starter Pack's real mod links.
+  # Three shapes available:
+  #   - name: Some Nexus Mod
+  #     nexus: morrowind/12345
+  #     files: []          # [] = auto-resolve main file via `modurn nexus download`
+  #   - name: Some GitHub/GitLab Mod
+  #     source: url
+  #     url: https://github.com/.../releases/download/v1/mod.zip
+  #   - name: Already downloaded
+  #     source: local
+  #     path: ~/Archive/game/openmw/downloads/mod.7z
