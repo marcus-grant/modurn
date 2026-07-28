@@ -1,0 +1,31 @@
+# Example modlist for a Flatpak OpenMW install on Linux.
+#
+# Key Flatpak detail: OpenMW's config lives under ~/.var/app/... , not
+# ~/.config. Point `config:` there so modurn writes the cfg the Flatpak
+# actually reads. Keep `mods_dir` under your home so the sandbox can read it.
+#
+#   modurn plan  examples/openmw-flatpak.yaml
+#   modurn apply examples/openmw-flatpak.yaml
+
+game:
+  config: ~/.var/app/org.openmw.OpenMW/config/openmw/openmw.cfg
+  mods_dir: ~/games/openmw/mods
+
+profile: flatpak-demo
+
+mods:
+  # Nexus (free account: guided browser download). Fill real file ids or let
+  # `modurn nexus download` auto-resolve the main file.
+  - name: Patch for Purists
+    nexus: morrowind/45096
+    files: []          # [] = auto-resolve main file during download
+
+  # Direct URL (GitHub/GitLab/etc.) -- fully automatic, no login, no clicking.
+  - name: Example GitHub mod
+    source: url
+    url: https://github.com/some/repo/releases/download/v1.0/mod.zip
+
+  # Something you already have on disk.
+  - name: A local mod
+    source: local
+    path: ~/downloads/some-mod.7z

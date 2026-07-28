@@ -21,8 +21,9 @@ what you're doing.
 Functional now:
 
 - **YAML modlist** with validated schema (pydantic) — the user contract.
-- **Two mod sources** behind the `ModSource` seam:
+- **Three mod sources** behind the `ModSource` seam:
   - `local` — install from archives/dirs you already have (no network).
+  - `url` — direct HTTP(S) downloads (GitHub/GitLab/ModDB); fully automatic.
   - `nexus` — guided, resumable browser downloads for free Nexus accounts.
 - **Install**: archive extraction (zip/7z, rar optional), wrapper-folder
   unwrap, plugin + data-dir detection.

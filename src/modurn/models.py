@@ -65,6 +65,11 @@ class Mod(BaseModel):
     # A pre-downloaded archive or an already-extracted directory.
     path: Optional[Path] = None
 
+    # --- url source fields (direct downloads: GitHub/GitLab/ModDB/etc.) ---
+    # A direct download link to an archive. No login, no Cloudflare -- the
+    # easy, fully-automatic path for the non-Nexus mods in a list.
+    url: Optional[str] = None
+
     # --- install hints (backend-agnostic) --------------------------------
     # Explicit plugin load order for this mod. If empty, modurn auto-detects
     # .esp/.esm/.omwaddon/.omwgame files and adds them in discovered order.
@@ -94,6 +99,8 @@ class Mod(BaseModel):
             raise ValueError(f"mod {self.name!r}: source 'nexus' requires a 'nexus: game/modid' field")
         if self.source == "local" and not self.path:
             raise ValueError(f"mod {self.name!r}: source 'local' requires a 'path' field")
+        if self.source == "url" and not self.url:
+            raise ValueError(f"mod {self.name!r}: source 'url' requires a 'url' field")
         return self
 
     @property

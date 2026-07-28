@@ -40,7 +40,15 @@ mods:
     path: ~/downloads/some-mod.7z        # an archive OR an extracted directory
     data_subdir: "00 Core"              # optional: data files live in a subfolder
     content: [Some.esp, SomeOther.esp]  # optional: explicit plugin order override
+
+  - name: A mod on GitHub/GitLab
+    source: url                          # direct download, no login/Cloudflare
+    url: https://github.com/u/r/releases/download/v1/mod.zip
 ```
+
+Sources: **`nexus`** (default; guided browser download for free accounts),
+**`url`** (any direct HTTP(S) archive link — the fully-automatic path for
+GitHub/GitLab/ModDB mods), **`local`** (an archive/dir you already have).
 
 Field notes:
 

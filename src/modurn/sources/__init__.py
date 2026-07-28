@@ -35,8 +35,15 @@ def _build_nexus(ctx: SourceContext) -> ModSource:
     return NexusSource(auth_state=ctx.nexus_auth_state, headless=ctx.headless)
 
 
+def _build_url(_: SourceContext) -> ModSource:
+    from .url import UrlSource
+
+    return UrlSource()
+
+
 _BUILDERS["local"] = _build_local
 _BUILDERS["nexus"] = _build_nexus
+_BUILDERS["url"] = _build_url
 
 
 def available_sources() -> list[str]:
